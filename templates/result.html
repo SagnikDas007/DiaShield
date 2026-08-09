@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DiaShield - Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container result-container">
+
+        <!-- Header -->
+        <div class="header">
+
+            <img src="{{ url_for('static', filename='images/diabetes-logo.png') }}"
+                 alt="DiaShield"
+                 class="logo">
+
+            <p>Diabetes Risk Assessment Result</p>
+
+        </div>
+
+
+        <!-- Result Card -->
+        {% if "High" in prediction %}
+
+        <div class="result-card high-risk">
+
+            <div class="result-icon">
+                🚨
+            </div>
+
+            <h2>
+                High Risk
+            </h2>
+
+            <p class="sub-text">
+                Your predicted diabetes risk is high.
+            </p>
+
+        </div>
+
+        {% else %}
+
+        <div class="result-card low-risk">
+
+            <div class="result-icon">
+                🟢
+            </div>
+
+            <h2>
+                Low Risk
+            </h2>
+
+            <p class="sub-text">
+                Your predicted diabetes risk is low.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- Check Again Button -->
+        <a href="/" class="back-button">
+            Check Again
+        </a>
+
+
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+
+            <strong>Disclaimer:</strong>
+
+            This application is developed for solely academic purposes only
+            and is not intended for medical diagnosis.
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
