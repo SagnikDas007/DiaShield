@@ -297,3 +297,9 @@ button:hover {
     font-weight: 700;
     color: #222;
 }
+.input-group small {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #777;
+    line-height: 1.3;
+}

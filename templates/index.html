@@ -1,115 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes Risk Predictor</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
+<div class="container">
 
-<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='images/diabetes-logo.png') }}"
+             alt="Diabetes Predictor"
+             class="logo">
 
-    <div class="container">
-
-        <div class="header">
-            <img src="{{ url_for('static', filename='images/diabetes-logo.png') }}"
-            alt="Diabetes Predictor"
-            class="logo">
-            <p>Enter your health information to know your risk of Diabetes</p>
-        </div>
-
-        <form action="/predict" method="POST">
-
-            <div class="form-grid">
-
-                <div class="input-group">
-                    <label for="pregnancies">Number of Pregnancies</label>
-                    <input type="number"
-                           id="pregnancies"
-                           name="pregnancies"
-                           min="0"
-                           required>
-                </div>
-
-                <div class="input-group">
-                    <label for="glucose">Glucose Level</label>
-                    <input type="number"
-                           id="glucose"
-                           name="glucose"
-                           min="0"
-                           required>
-                </div>
-
-                <div class="input-group">
-                    <label for="blood_pressure">Blood Pressure</label>
-                    <input type="number"
-                           id="blood_pressure"
-                           name="blood_pressure"
-                           min="0"
-                           required>
-                </div>
-
-                <div class="input-group">
-                    <label for="skin_thickness">Skin Thickness</label>
-                    <input type="number"
-                           id="skin_thickness"
-                           name="skin_thickness"
-                           min="0"
-                           required>
-                </div>
-
-                <div class="input-group">
-                    <label for="insulin">Insulin</label>
-                    <input type="number"
-                           id="insulin"
-                           name="insulin"
-                           min="0"
-                           required>
-                </div>
-
-                <div class="input-group">
-                    <label for="bmi">BMI</label>
-                    <input type="number"
-                           id="bmi"
-                           name="bmi"
-                           step="0.1"
-                           min="0"
-                           required>
-                </div>
-
-                <div class="input-group">
-                    <label for="diabetes_pedigree">Diabetes Pedigree Function</label>
-                    <input type="number"
-                           id="diabetes_pedigree"
-                           name="diabetes_pedigree"
-                           step="0.01"
-                           min="0"
-                           required>
-                </div>
-
-                <div class="input-group">
-                    <label for="age">Age</label>
-                    <input type="number"
-                           id="age"
-                           name="age"
-                           min="1"
-                           required>
-                </div>
-
-            </div>
-
-            <button type="submit">Predict Diabetes Risk</button>
-
-        </form>
-
-        <div class="disclaimer">
-            <strong>Disclaimer:</strong>
-            This application is developed for academic purposes only
-            and is not intended for medical diagnosis.
-        </div>
-
+        <p>Enter your health information to know your risk of Diabetes</p>
     </div>
 
-</body>
-</html>
+    <form action="/predict" method="POST">
+
+        <div class="form-grid">
+
+            <div class="input-group">
+                <label for="pregnancies">Number of Pregnancies</label>
+
+                <input type="number"
+                       id="pregnancies"
+                       name="pregnancies"
+                       min="0"
+                       required>
+
+                <small>Enter 0 if never pregnant or a male candidate.</small>
+            </div>
+
+
+            <div class="input-group">
+                <label for="glucose">Glucose Level</label>
+
+                <input type="number"
+                       id="glucose"
+                       name="glucose"
+                       min="0"
+                       required>
+
+                <small>Typical fasting range: 70–99 mg/dL.</small>
+            </div>
+
+
+            <div class="input-group">
+                <label for="blood_pressure">Blood Pressure</label>
+
+                <input type="number"
+                       id="blood_pressure"
+                       name="blood_pressure"
+                       min="0"
+                       required>
+
+                <small>Typical range: 60–80 mmHg.</small>
+            </div>
+
+
+            <div class="input-group">
+                <label for="skin_thickness">Skin Thickness</label>
+
+                <input type="number"
+                       id="skin_thickness"
+                       name="skin_thickness"
+                       min="0"
+                       required>
+
+                <small>Enter triceps skin-fold thickness in mm.</small>
+            </div>
+
+
+            <div class="input-group">
+                <label for="insulin">Insulin</label>
+
+                <input type="number"
+                       id="insulin"
+                       name="insulin"
+                       min="0"
+                       required>
+
+                <small>Enter 2-hour serum insulin level in μU/mL.</small>
+            </div>
+
+
+            <div class="input-group">
+                <label for="bmi">BMI</label>
+
+                <input type="number"
+                       id="bmi"
+                       name="bmi"
+                       step="0.1"
+                       min="0"
+                       required>
+
+                <small>Enter BMI. Generally 18.5–24.9 is considered healthy.</small>
+            </div>
+
+
+            <div class="input-group">
+                <label for="diabetes_pedigree">
+                    Diabetes Pedigree Function
+                </label>
+
+                <input type="number"
+                       id="diabetes_pedigree"
+                       name="diabetes_pedigree"
+                       step="0.01"
+                       min="0"
+                       required>
+
+                <small>Enter the value provided by your medical/test data (0–2.5).</small>
+            </div>
+
+
+            <div class="input-group">
+                <label for="age">Age</label>
+
+                <input type="number"
+                       id="age"
+                       name="age"
+                       min="1"
+                       required>
+
+                <small>Enter your age in years.</small>
+            </div>
+
+        </div>
+
+        <button type="submit">Predict Diabetes Risk</button>
+
+    </form>
+
+    <div class="disclaimer">
+        <strong>Disclaimer:</strong>
+        This application is developed solely for academic purposes only
+        and is not intended for medical diagnosis.
+    </div>
+
+</div>
